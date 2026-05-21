@@ -1,15 +1,7 @@
-const template = document.createElement('template');
-template.innerHTML = `
-  <link rel="stylesheet" href="./css/WeatherTime.css" />
-
-  <div class="weather" part="weather">
-    <div class="ciudad"    part="ciudad"></div>
-    <div class="temp"      part="temp"></div>
-    <div class="condicion" part="condicion"></div>
-  </div>
-`;
+import styles from '../css/WeatherTime.css' with { type: 'css' };
 
 class WeatherTime extends HTMLElement {
+
   static get observedAttributes() {
     return ['ciudad', 'temperatura', 'condicion'];
   }
@@ -17,24 +9,25 @@ class WeatherTime extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.shadowRoot.adoptedStyleSheets = [styles];
   }
 
   connectedCallback() {
-    this._render();
+    this.render();
   }
 
   attributeChangedCallback(name, oldVal, newVal) {
-    if (oldVal !== newVal) this._render();
+    if (oldVal !== newVal) this.render();
   }
 
-  _render() {
-    this.shadowRoot.querySelector('.ciudad').textContent =
-      this.getAttribute('ciudad') || '';
-    this.shadowRoot.querySelector('.temp').textContent =
-      `${this.getAttribute('temperatura') || '--'}°C`;
-    this.shadowRoot.querySelector('.condicion').textContent =
-      this.getAttribute('condicion') || '';
+  render() {
+    this.shadowRoot.setHTMLUnsafe(/* html */`
+      <div class="weather" part="weather">
+        <div class="ciudad"    part="ciudad">${this.getAttribute('ciudad') ?? ''}</div>
+        <div class="temp"      part="temp">${this.getAttribute('temperatura') ?? '--'}°C</div>
+        <div class="condicion" part="condicion">${this.getAttribute('condicion') ?? ''}</div>
+      </div>
+    `);
   }
 }
 
