@@ -1,0 +1,34 @@
+:host {
+  display: block;
+  --weather-bg: #c8eac8;
+  --temp-color: #e65c00;
+}
+
+.weather {
+  background: var(--weather-bg);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.ciudad {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #1a4d1a;
+}
+
+.temp {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--temp-color);
+}
+
+.condicion {
+  color: #2d6b2d;
+  font-size: 0.95rem;
+}

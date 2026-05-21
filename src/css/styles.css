@@ -1,0 +1,39 @@
+body {
+  font-family: sans-serif;
+  background: #e8eaf0;
+  margin: 0;
+  padding: 40px;
+}
+
+/* CSS Custom Properties: theming cruzando el shadow boundary */
+user-dashboard {
+  --dashboard-bg: #deb8a0;
+}
+
+user-card {
+  --card-bg: #90b8e0;
+  --btn-bg: #1a5a9a;
+  --btn-hover-bg: #0d3d6e;
+}
+
+weather-time {
+  --weather-bg: #a8dca8;
+  --temp-color: #c04000;
+}
+
+warning-badge {
+  --badge-bg: #fef0a0;
+  --badge-border: #d4aa00;
+}
+
+/* ::part() — acceso quirurgico a partes expuestas del shadow DOM */
+user-card::part(btn-saludo) {
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+warning-badge::part(badge) {
+  font-size: 1rem;
+  border-radius: 8px;
+}

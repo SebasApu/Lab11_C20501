@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab11 - User Dashboard</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+
+  <user-dashboard>
+    <user-card
+      slot="card"
+      avatar="👤"
+      nombre="Alonso"
+      rol="Profesor">
+    </user-card>
+
+    <weather-time
+      slot="weather"
+      ciudad="Liberia"
+      temperatura="31"
+      condicion="Sunny">
+    </weather-time>
+
+    <warning-badge slot="warning">Sesión por expirar</warning-badge>
+  </user-dashboard>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
