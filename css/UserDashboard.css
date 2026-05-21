@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  --dashboard-bg: #e8c8b8;
+}
+
+.dashboard {
+  background: var(--dashboard-bg);
+  border-radius: 16px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 16px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.slot-card    { grid-column: 1; grid-row: 1; }
+.slot-weather { grid-column: 2; grid-row: 1; }
+.slot-warning { grid-column: 1 / -1; grid-row: 2; }
+
+/* ::slotted() estiliza los elementos proyectados desde el light DOM */
+::slotted(user-card),
+::slotted(weather-time) {
+  display: block;
+  height: 100%;
+}
+
+::slotted(warning-badge) {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
